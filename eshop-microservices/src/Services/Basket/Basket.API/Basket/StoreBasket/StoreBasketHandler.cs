@@ -17,8 +17,9 @@ public class StoreBasketHandler(IBasketRepository repository)
 {
     public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
     {
-        // ToDo: store basket in database
-        // ToDo: update cache
+        // TODO
+
+
         await repository.StoreBasket(command.Cart, cancellationToken);
 
         return new StoreBasketResult(command.Cart.UserName);
