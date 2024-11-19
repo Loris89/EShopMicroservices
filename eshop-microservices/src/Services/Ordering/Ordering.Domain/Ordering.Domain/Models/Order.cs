@@ -28,14 +28,14 @@ public class Order : Aggregate<OrderId>
         private set { }
     }
 
-    public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAggress, Address billingAddress, Payment payment)
+    public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment)
     {
         var order = new Order
         {
             Id = id,
             CustomerId = customerId,
             OrderName = orderName,
-            ShippingAddress = shippingAggress,
+            ShippingAddress = shippingAddress,
             BillingAddress = billingAddress,
             Payment = payment,
             Status = OrderStatus.Pending
