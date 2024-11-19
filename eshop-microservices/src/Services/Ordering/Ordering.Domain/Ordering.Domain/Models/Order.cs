@@ -6,6 +6,10 @@ public class Order : Aggregate<OrderId>
 
     public IReadOnlyList<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
+    // Uso di classi al posto dei tipi primitivi (evitare "primitive obsession"):
+    // https://refactoring.guru/smells/primitive-obsession
+    // https://medium.com/the-sixt-india-blog/primitive-obsession-code-smell-that-hurt-people-the-most-5cbdd70496e9
+
     public CustomerId CustomerId { get; private set; } = default!;
 
     public OrderName OrderName { get; private set; } = default!;
