@@ -1,18 +1,16 @@
 namespace Shopping.Web.Pages;
 
-public class IndexModel : PageModel
-{
-    private readonly ILogger<IndexModel> _logger;
-    
+public class IndexModel(ICatalogService catalogService, ILogger<IndexModel> logger) : PageModel
+{    
     public IEnumerable<ProductModel> ProductList { get; set; } = [];
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public async Task<IActionResult> OnGetAsync()
     {
-        _logger = logger;
-    }
+        logger.LogInformation("Index page visited");
 
-    public void OnGet()
-    {
+        var result = await catalogService.GetProducts();
+        ProductList = result.Products;
 
+        return Page();
     }
 }
